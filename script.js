@@ -1,6 +1,6 @@
 let musicStarted = false;
 
-const herName = "My Love"; // ← change this to her name
+const herName = "My Love"; // ← change this to her name -also made a git change
 
 const loveNotes = [
   `Hi ${herName}, every day with you feels like a gift.`,
