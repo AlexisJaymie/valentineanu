@@ -32,8 +32,16 @@
   <div class="container active" id="welcome">
     <h1>Happy Valentine’s Day 🤍🤍🤍</h1>
     <p>This is just for you.</p>
-    <button onclick="nextScreen('notes')">Start 💕</button>
+    <button onclick="nextScreen('countdown')">Start 💕</button>
+
   </div>
+
+  <div class="container" id="countdown">
+  <h2>Counting Down to Valentine’s 💕</h2>
+  <div id="timer">Loading...</div>
+  <button onclick="nextScreen('notes')">Continue 💖</button>
+</div>
+
 
   <div class="container" id="notes">
   <h2>For You, My Queen 💌</h2>
@@ -43,13 +51,21 @@
 
 
   <div class="container" id="final">
-    <h2>One Last Thing 🌹</h2>
-    <p>
-      Thank you for being you.  
-      I choose you today, always and forever.
-    </p>
-    <button onclick="confetti()">Will you be my Valentine? 💖</button>
-  </div>
+  <h2>Always & Forever 💖</h2>
+
+  <p>
+    This little app is just a small way to say  
+    how much you mean to me.
+  </p>
+
+  <p class="signature">
+    Made with ❤️ by Charming
+  </p>
+
+  <button onclick="confetti()">Will you be my Valentine? 💕</button>
+  <button onclick="shareLove()">Share This 💌</button>
+</div>
+
 
   <div class="container" id="gallery">
   <h2>Memory Lane 📸</h2>

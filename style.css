@@ -1,4 +1,45 @@
-body {
+body { 
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("bg/rm.jpg") center/cover no-repeat;
+  animation: bgMove 20s ease-in-out infinite alternate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+@keyframes bgMove {
+  from {
+    background-position: center;
+  }
+  to {
+    background-position: center top;
+  }
+}
+
+
+
+/* body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  background: 
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("bg/rm.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  overflow: hidden;
+}  backgroung animation idea  subtle zoom or slow pan to add depth and movement without being distracting.
+*/
+
+
+/* body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
@@ -7,9 +48,50 @@ body {
   align-items: center;
   justify-content: center;
   color: #fff;
-}
+} */
+
 
 .container {
+  display: none;
+  text-align: center;
+  max-width: 340px;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  animation: fadeUp 0.8s ease;
+  box-shadow:
+  0 15px 40px rgba(0,0,0,0.4),
+  0 0 40px rgba(255, 120, 180, 0.25);
+
+animation: fadeUp 0.8s ease, glow 4s ease-in-out infinite;
+@keyframes glow {
+  0%, 100% {
+    box-shadow:
+      0 15px 40px rgba(0,0,0,0.4),
+      0 0 30px rgba(255, 120, 180, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 15px 40px rgba(0,0,0,0.4),
+      0 0 50px rgba(255, 120, 180, 0.35);
+  }
+}
+
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* .container {
   display: none;
   text-align: center;
   max-width: 320px;
@@ -17,7 +99,7 @@ body {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
+} */
 
 .container.active {
   display: block;
@@ -35,9 +117,28 @@ button {
   transition: transform 0.2s;
 }
 
-button:hover {
+/* button:hover {
   transform: scale(1.05);
+} */
+
+button {
+  margin-top: 20px;
+  padding: 14px 26px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #b1004b;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
+
+button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
 
 /* Confetti canvas sits on top, pointer-events disabled so UI remains clickable */
 #confetti-canvas {
@@ -164,4 +265,19 @@ h1, h2 {
   padding: 10px;
   font-size: 16px;
 }
+
+#timer {
+  font-size: 22px;
+  margin-top: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.signature {
+  margin-top: 15px;
+  font-size: 13px;
+  opacity: 0.8;
+  font-style: italic;
+}
+
 

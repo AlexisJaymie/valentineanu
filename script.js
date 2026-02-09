@@ -1,6 +1,6 @@
 let musicStarted = false;
 
-const herName = "My Love"; // ← change this to her name -also made a git change
+const herName = "My Love"; // ← change this to her name -also made a git
 
 const loveNotes = [
   `Hi ${herName}, every day with you feels like a gift.`,
@@ -65,6 +65,25 @@ function openViewer(imgSrc, text) {
 function closeViewer() {
   document.getElementById('photoViewer').classList.remove('show');
 }
+const valentineDate = new Date("February 14, 2026 00:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = valentineDate - now;
+
+  if (distance < 0) {
+    document.getElementById("timer").innerText = "Happy Valentine’s Day ❤️";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("timer").innerText =
+    `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}, 1000);
 
 function toggleMusic() {
   const music = document.getElementById('bgMusic');
@@ -74,6 +93,34 @@ function toggleMusic() {
     music.pause();
   }
 }
+
+function shareLove() {
+  const text = "I just received the sweetest Valentine app 💖";
+  const url = window.location.href;
+
+  if (navigator.share) {
+    navigator.share({
+      title: "My Valentine 💕",
+      text: text,
+      url: url
+    });
+  } else {
+    navigator.clipboard.writeText(url);
+    alert("Link copied 💖");
+  }
+}
+
+
+// setInterval(() => {
+//   const heart = document.createElement("div");
+//   heart.className = "bg-heart";
+//   heart.innerText = "💖";
+//   heart.style.left = Math.random() * 100 + "vw";
+//   document.body.appendChild(heart);
+
+//   setTimeout(() => heart.remove(), 10000);
+// }, 1200);
+
 
 
 
