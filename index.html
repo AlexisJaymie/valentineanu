@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Valentine Day🤍🤍🤍</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<div id="overlay">
+  <div class="overlay-content">
+    <h1>She said YES 💖</h1>
+    <p>
+      Thank you for being my safe place,  
+      my happiness, and my love.
+    </p>
+  </div>
+</div>
+
+<div id="photoViewer" onclick="closeViewer()">
+  <img id="viewerImg" />
+  <p id="viewerText"></p>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="audio/love.mp3" type="audio/mpeg">
+</audio>
+
+
+
+<body>
+
+  <div class="container active" id="welcome">
+    <h1>Happy Valentine’s Day 🤍🤍🤍</h1>
+    <p>This is just for you.</p>
+    <button onclick="nextScreen('notes')">Start 💕</button>
+  </div>
+
+  <div class="container" id="notes">
+  <h2>For You, My Queen 💌</h2>
+  <p id="loveText"></p>
+  <button onclick="nextNote()">Next 💖</button>
+</div>
+
+
+  <div class="container" id="final">
+    <h2>One Last Thing 🌹</h2>
+    <p>
+      Thank you for being you.  
+      I choose you today, always and forever.
+    </p>
+    <button onclick="confetti()">Will you be my Valentine? 💖</button>
+  </div>
+
+  <div class="container" id="gallery">
+  <h2>Memory Lane 📸</h2>
+
+  <div class="gallery">
+    <div class="photo">
+      <img src="images/img1.jpg" alt="memory"
+ onclick="openViewer('images/img1.jpg', 'One of my favorite moments with you 💕')">
+
+    </div>
+
+    <div class="photo">
+     <img src="images/img2.jpg"
+ onclick="openViewer('images/img2.jpg', 'This day still makes me smile 😌')">
+
+    </div>
+
+    <div class="photo">
+      <img src="images/img3.jpg"
+ onclick="openViewer('images/img3.jpg', 'Forever grateful for moments like this ❤️')">
+    </div>
+  </div>
+
+  <button onclick="nextScreen('final')">Next ➡️</button>
+</div>
+<button class="mute" onclick="toggleMusic()">🔊</button>
+
+
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
