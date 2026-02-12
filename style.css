@@ -163,6 +163,49 @@ h1, h2 {
   left: 0;
   width: 100%;
   height: 100%;
+  /* Deep romantic gradient instead of plain black/white */
+  background: radial-gradient(circle, rgba(255, 79, 129, 0.9) 0%, rgba(0, 0, 0, 0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease; /* Slower, smoother fade */
+  z-index: 10000;
+}
+
+#overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.overlay-content {
+  /* Remove the solid white background */
+  background: transparent; 
+  color: #fff; /* White text looks better on the pink gradient */
+  padding: 20px;
+  text-align: center;
+  max-width: 350px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.overlay-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  animation: heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+/* #overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.6);
   display: flex;
   align-items: center;
@@ -197,8 +240,8 @@ h1, h2 {
   to {
     transform: translateY(-110vh);
     opacity: 0;
-  }
-}
+  } */
+
 
 .gallery {
   display: grid;
@@ -280,4 +323,53 @@ h1, h2 {
   font-style: italic;
 }
 
+/* Hide photos initially */
+.photo {
+  opacity: 0;
+  transform: translateY(-100vh) rotate(-10deg);
+  transition: opacity 0.5s ease;
+}
+
+/* The animation class we will add via JS */
+.fall-down {
+  animation: tileDrop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes tileDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh) rotate(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--rand-rot));
+  }
+}
+
+.heart {
+  position: fixed; /* Takes them out of the normal document flow */
+  bottom: -50px;
+  font-size: 24px;
+  user-select: none;
+  pointer-events: none; /* Crucial: clicks go THROUGH the hearts */
+  z-index: 999; /* Below the overlay content, but above the background */
+  animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(20px); /* Slight drift */
+    opacity: 0;
+  }
+}
+
+/* Ensure the overlay content stays on top and centered */
+.overlay-content {
+  position: relative;
+  z-index: 10001; /* Higher than the hearts */
+}
 

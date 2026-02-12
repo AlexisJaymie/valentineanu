@@ -122,7 +122,72 @@ function shareLove() {
 // }, 1200);
 
 
+function nextScreen(id) {
+  document.querySelectorAll('.container').forEach(c => {
+    c.classList.remove('active');
+  });
+  
+  const targetScreen = document.getElementById(id);
+  targetScreen.classList.add('active');
 
+  // START MUSIC
+  if (!musicStarted) {
+    document.getElementById('bgMusic').play();
+    musicStarted = true;
+  }
+
+  // LOGIC FOR FALLING TILES
+  if (id === 'gallery') {
+    const photos = document.querySelectorAll('.photo');
+    photos.forEach((photo, index) => {
+      // Set a random rotation so they look like scattered Polaroids
+      const randomRotation = (Math.random() * 10 - 5) + 'deg';
+      photo.style.setProperty('--rand-rot', randomRotation);
+      
+      // Delay each photo slightly for the "staggered" waterfall effect
+      setTimeout(() => {
+        photo.classList.add('fall-down');
+      }, index * 400); // 400ms gap between photos
+    });
+  }
+
+  if (id === 'notes') {
+    document.getElementById('loveText').innerText = loveNotes[0];
+  }
+}
+
+function createHearts() {
+  // Use a variety to make it look rich
+  const heartTypes = ['❤️', '💖', '🤍', '✨'];
+  
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    
+    // Pick ONE random emoji
+    heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+    
+    // Randomize position across the full width
+    heart.style.left = Math.random() * 100 + 'vw';
+    
+    // Randomize size slightly for depth
+    const size = Math.random() * (30 - 15) + 15;
+    heart.style.fontSize = size + 'px';
+    
+    document.body.appendChild(heart);
+
+    // Clean up to keep the app fast
+    setTimeout(() => heart.remove(), 4000);
+  }, 300); // Adjust this number to make it more or less "crowded"
+}
+
+function confetti() {
+  if (navigator.vibrate) {
+    navigator.vibrate([100, 50, 100]); // Short heartbeat vibration
+  }
+  document.getElementById('overlay').classList.add('show');
+  createHearts();
+}
 
 
 
