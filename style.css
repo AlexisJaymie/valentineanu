@@ -243,17 +243,43 @@ h1, h2 {
   } */
 
 
-.gallery {
+/* .gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   margin-top: 20px;
+} */
+
+/* Only affects the Memory Lane screen */
+#gallery {
+  max-width: none; 
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.5); /* Slightly darker for focus */
+  overflow-y: auto;
+  display: none; 
+}
+
+#gallery.active {
+  display: block; 
+}
+
+.gallery {
+  display: grid;
+  /* Reduced from 180px to 120px for a more compact look */
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
+  gap: 8px; /* Tighter gaps for a cleaner look */
+  padding: 15px;
 }
 
 .photo img {
   width: 100%;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  height: 160px; /* Controlled height so they aren't 'long' */
+  object-fit: cover; 
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .photo p {
